@@ -8,10 +8,11 @@ var subarraysDivByK = function (nums, k) {
     let sum = 0;
     let map = new Map();
     map.set(0, 1);
+    console.log('log to see why we need to use a long expression instead of sum % k', -1 % 2, ((-1 % 2) + 2) % 2)
     for (let i = 0; i < nums.length; i++) {
         sum += nums[i];
         r = ((sum % k) + k) % k;
-        
+        console.log('checking r', r, sum % k);
         if (map.has(r)) {
             count += map.get(r);
         }
@@ -19,9 +20,3 @@ var subarraysDivByK = function (nums, k) {
     }
     return count;
 };
-
-// // prefixSum(i) - k = prefixSum(j) => prefixSum(j) % k === 0 -> correct
-//   0  1  2  3  4 5 
-//   4  5  0 -2 -3 1   , k=5 
-// 0 4  9  9  7  4 5
-// 1 1  1  2  1  2 1
