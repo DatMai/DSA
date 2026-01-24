@@ -3,17 +3,19 @@
  * @return {number[]}
  */
 var findDisappearedNumbers = function (nums) {
-    let map = new Map();
-    let cache = []
+    let result = [];
     for (let i = 0; i < nums.length; i++) {
-        map.set(nums[i], nums[i]);
-    }
-
-    for (let i = 1; i <= nums.length; i++) {
-        if (!map.has(i)) {
-            cache.push(i);
+        let newIndex = Math.abs(nums[i]) - 1;
+        if (nums[newIndex] > 0) {
+            nums[newIndex] = -nums[newIndex];
         }
     }
-    
-    return cache;
+
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] > 0) {
+            result.push(i + 1);
+        }
+    }
+
+    return result;
 };
