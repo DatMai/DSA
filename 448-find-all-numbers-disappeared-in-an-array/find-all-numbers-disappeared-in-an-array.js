@@ -1,16 +1,18 @@
-var findDisappearedNumbers = function(nums) {
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var findDisappearedNumbers = function (nums) {
+    let map = new Map();
+    let cache = []
     for (let i = 0; i < nums.length; i++) {
-        const index = Math.abs(nums[i]) - 1; // chuyển về chỉ số (0-based)
-        if (nums[index] > 0) {
-            nums[index] = -nums[index]; // đánh dấu là đã thấy
-        }
+        map.set(nums[i], nums[i]);
     }
+    for (let i = 1; i <= nums.length; i++) {
 
-    const result = [];
-    for (let i = 0; i < nums.length; i++) {
-        if (nums[i] > 0) {
-            result.push(i + 1); // index + 1 = số bị thiếu
+        if (!map.has(i)) {
+            cache.push(i);
         }
     }
-    return result;
+    return cache;
 };
