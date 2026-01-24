@@ -3,20 +3,17 @@
  * @return {number}
  */
 var pivotIndex = function (nums) {
-    let sumLeft = 0;
-    let pivotIndex = -1;
-
+    let totalSum = 0, leftSum = 0;
     for (let i = 0; i < nums.length; i++) {
-        sumLeft += nums[i - 1] ? nums[i - 1] : 0;
-        let sumRight = 0;
-        for (let j = i + 1; j < nums.length; j++) {
-            sumRight += nums[j];
+        totalSum += nums[i]
+    }
+    for (let i = 0; i < nums.length; i++) {
+        if (totalSum - leftSum - nums[i] == leftSum) {
+            return i;
         }
-        if (sumLeft == sumRight) {
-            pivotIndex = i;
-            break;
-        }
+        leftSum += nums[i]
 
     }
-    return pivotIndex;
+
+    return -1;
 };
