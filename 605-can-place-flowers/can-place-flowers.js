@@ -11,6 +11,7 @@ var canPlaceFlowers = function (flowerbed, n) {
             && (flowerbed[i + 1] == 0 || flowerbed[i + 1] == null)) {
             count++;
             i = i + 1;
+            if (n <= count) return true;
         }
     }
     return n <= count;
