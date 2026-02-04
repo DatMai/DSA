@@ -7,13 +7,14 @@ var digitSum = function (s, k) {
     let size = s.length;
     let arr = [];
     if (s.length <= k) return s;
+
     while (size > k) {
-        let a = arr.length > 0 ? arr : s;
+        let a = arr.length > 0 ? arr.join('') : s;
         arr = divine(a, k);
         size = arr.length;
     }
-    let sum = arr.reduce((a, b) => String(a) + String(b));
-    return sum;
+
+    return arr.join('');
 };
 
 divine = (s, k) => {
