@@ -30,12 +30,10 @@ divine = (s, k) => {
 
     arr = merge(arr);
     arr = arr.join('').split('');
-    console.log('checking arr', arr);
     return arr;
 }
 
 merge = (arr) => {
-    console.log('checking arr', arr)
     for (let i = 0; i < arr.length; ++i) {
         arr[i] = arr[i].reduce((e, v) => Number(e) + Number(v), 0);
     }
