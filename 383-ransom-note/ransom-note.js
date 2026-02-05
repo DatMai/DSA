@@ -1,13 +1,17 @@
-var canConstruct = function(ransomNote, magazine) {
-    const map = {};
-    
-    for (const c of magazine) {
-        map[c] = (map[c] || 0) + 1;
-    }
-
-    for (const c of ransomNote) {
-        if (!map[c]) return false;
-        map[c]--;
+/**
+ * @param {string} ransomNote
+ * @param {string} magazine
+ * @return {boolean}
+ */
+var canConstruct = function (ransomNote, magazine) {
+    for (let i = 0; i < ransomNote.length; ++i) {
+        let index = magazine.indexOf(ransomNote[i]);
+        if (index == -1) {
+            return false;
+        }
+        else {
+            magazine = magazine.slice(0, index) + magazine.slice(index + 1);
+        };
     }
 
     return true;
