@@ -3,7 +3,7 @@
  * @return {boolean}
  */
 var isPowerOfThree = function (n) {
-    if (n == 1) return true;
-    if (n <= 0 || n % 3 != 0) return false;
+    if (n == 1) return 1;
+    if (n <= 0 || n % 3 !== 0) return 0;
     return isPowerOfThree(n / 3);
 };
