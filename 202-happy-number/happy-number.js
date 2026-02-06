@@ -1,10 +1,9 @@
-var isHappy = function (n) {
-    const set = new Set();
-    while (n !== 1 && !set.has(n)) {
-        set.add(n);
-        n = getNext(n);
-    }
-    return n === 1;
+var isHappy = function (n, seen = new Set()) {
+    if (n === 1) return true;
+    if (seen.has(n)) return false;
+
+    seen.add(n);
+    return isHappy(getNext(n), seen);
 };
 
 function getNext(n) {
