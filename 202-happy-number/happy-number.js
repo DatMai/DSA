@@ -1,10 +1,12 @@
-var isHappy = function (n, seen = new Set()) {
-    if (n === 1) return true;
-    if (seen.has(n)) return false;
-
-    seen.add(n);
-    return isHappy(getNext(n), seen);
+var isHappy = function (n) {
+    return dfs(n, getNext(n));
 };
+
+function dfs(slow, fast) {
+    if (fast === 1) return true;
+    if (slow === fast) return false;
+    return dfs(getNext(slow), getNext(getNext(fast)));
+}
 
 function getNext(n) {
     let sum = 0;
