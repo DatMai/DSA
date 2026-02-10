@@ -1,7 +1,6 @@
 /**
  * @param {number[]} nums
  */
-let sum = 0
 var NumArray = function (nums) {
     sum = new Array(nums.length + 1).fill(0);
     for (let i = 0; i < nums.length; ++i) {
