@@ -1,9 +1,9 @@
-let staticNum = [];
 /**
  * @param {number[]} nums
  */
+let staticNumber = 0
 var NumArray = function (nums) {
-    staticNum = nums;
+    staticNumber = nums;
 };
 
 /** 
@@ -14,7 +14,7 @@ var NumArray = function (nums) {
 NumArray.prototype.sumRange = function (left, right) {
     let total = 0;
     for (let i = left; i <= right; ++i) {
-        total += staticNum[i];
+        total += staticNumber[i];
     }
     return total;
 };
