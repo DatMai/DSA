@@ -7,6 +7,7 @@ var bulbSwitch = function (n) {
     for (let i = 1; i <= n; ++i) {
         let r = Math.floor(Math.sqrt(i));
         if (r * r == i) count++;
+        if (r * r > n) break;
     }
     return count;
 }
