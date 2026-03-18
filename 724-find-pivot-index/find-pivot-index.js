@@ -3,16 +3,15 @@
  * @return {number}
  */
 var pivotIndex = function (nums) {
-    const totalSum = nums.reduce((sum, n) => sum + n, 0);
     let leftSum = 0;
-
+    let total = nums.reduce((accumulator, currentValue) => accumulator + currentValue);
     for (let i = 0; i < nums.length; ++i) {
-        if (leftSum === totalSum - nums[i] - leftSum) {
+        leftSum += nums[i - 1] ? nums[i - 1] : 0;
+
+        if (total - leftSum - nums[i] == leftSum) {
             return i;
         }
 
-        leftSum += nums[i]
     }
-
     return -1;
 };
