@@ -4,7 +4,6 @@
  */
 var generate = function (numRows) {
     let arr = [[1]];
-
     for (let i = 1; i < numRows; ++i) {
         arr.push(new Array(i + 1).fill(0));
         for (let j = 0; j <= i; ++j) {
@@ -12,6 +11,5 @@ var generate = function (numRows) {
             arr[i][j] += j < i ? arr[i - 1][j] : 0;
         }
     }
-
     return arr;
 };
