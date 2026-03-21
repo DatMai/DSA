@@ -4,13 +4,15 @@
  * @return {boolean}
  */
 var canPlaceFlowers = function (flowerbed, n) {
-    let avaiSlot = 0;
+    if (flowerbed.length == 1 && flowerbed[0] == 0) return true;
     for (let i = 0; i < flowerbed.length; ++i) {
-        if (flowerbed[i] == 0 && (flowerbed[i + 1] == 0 || flowerbed[i + 1] == null) && (flowerbed[i - 1] == 0 || flowerbed[i - 1] == null)) {
+        if (i === 0 && flowerbed[i] === 0 && flowerbed[i + 1] === 0) { flowerbed[i] = 1; n--; }
+        if (i === flowerbed.length - 1 && flowerbed[i] === 0 && flowerbed[i - 1] === 0) { flowerbed[i] = 1; n--; }
+        if (i != 0 && i != flowerbed.length && flowerbed[i] === 0 && flowerbed[i - 1] === 0 && flowerbed[i + 1] === 0) {
             flowerbed[i] = 1;
-            avaiSlot++;
+            n--;
         }
     }
-    console.log('checking avaiSlot', flowerbed, avaiSlot)
-    return avaiSlot >= n;
+
+    return n <= 0;
 };
