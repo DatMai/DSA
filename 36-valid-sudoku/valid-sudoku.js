@@ -12,7 +12,6 @@ var isValidSudoku = function (board) {
             let box = `${board[i][j]} in box (${Math.floor(i / 3)},${Math.floor(j / 3)})`;
 
             if (seen.has(row) || seen.has(col) || seen.has(box)) {
-                console.log('checking seen', row, col, box, seen)
                 return false
             };
 
