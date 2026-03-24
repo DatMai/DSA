@@ -2,16 +2,16 @@
  * @param {number[]} nums
  * @return {number}
  */
-var minimumCost = function (nums) {
+var minimumCost = function(nums) {
     let min1 = Infinity, min2 = Infinity;
 
     for (let i = 1; i < nums.length; ++i) {
-        if (nums[i] < min1) {
+        if (min1 > nums[i]) {
             min2 = min1;
             min1 = nums[i];
         }
-        else if (nums[i] < min2) {
-            min2 = nums[i];
+        else if (min2 > nums[i]) {
+            min2 = nums[i]
         }
     }
 
