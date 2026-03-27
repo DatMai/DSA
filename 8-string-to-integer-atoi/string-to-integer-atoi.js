@@ -24,7 +24,8 @@ var myAtoi = function (s) {
 
         // check overflow before adding digit
         const MAX_DIV_10 = Math.floor(INT_MAX / 10);
-        if (result > MAX_DIV_10 || (result === MAX_DIV_10 && digit > 7)) {
+        const MAX_LAST_DIGIT = INT_MAX % 10; // = 7
+        if (result > MAX_DIV_10 || (result === MAX_DIV_10 && digit > MAX_LAST_DIGIT)) {
             return sign === 1 ? INT_MAX : INT_MIN;
         }
 
