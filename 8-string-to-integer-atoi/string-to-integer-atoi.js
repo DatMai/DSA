@@ -20,10 +20,11 @@ var myAtoi = function (s) {
     const INT_MAX = (2 ** 31) - 1;
     const INT_MIN = -(2 ** 31)
     while (i < n && s[i] >= '0' && s[i] <= '9') {
-        let digit = s[i].charCodeAt(0) - '0'.charCodeAt(0);
+        let digit = s[i] - '0';
 
         // check overflow before adding digit
-        if (result > Math.floor(INT_MAX / 10) || (result === Math.floor(INT_MAX / 10) && digit > 7)) {
+        const MAX_DIV_10 = Math.floor(INT_MAX / 10);
+        if (result > MAX_DIV_10 || (result === MAX_DIV_10 && digit > 7)) {
             return sign === 1 ? INT_MAX : INT_MIN;
         }
 
