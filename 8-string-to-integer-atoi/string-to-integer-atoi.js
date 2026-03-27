@@ -2,52 +2,34 @@
  * @param {string} s
  * @return {number}
  */
-myAtoi = (s) => {
-    s = trimWhiteSpace(s);
-    if (s.length === 0) return 0;
+var myAtoi = function (s) {
+    let i = 0;
+    let n = s.length;
 
-    if ((s[0] >= 'a' && s[0] <= 'z') || (s[0] >= 'A' && s[0] <= 'Z')) return 0;
+    // skip leading whitespace;
+    while (i < n && s[i] === ' ') i++;
 
-    let { sign, str } = signedNess(s);
-
-    str = conversion(str);
-
-    let num = sign * Number(str);
-    return clamp32(num);
-};
-
-trimWhiteSpace = (s) => {
-    return s.trim();
-}
-
-signedNess = (s) => {
+    // check sign;
     let sign = 1;
-
-    if (s[0] === '+' || s[0] === '-') {
-        sign = s[0] === '-' ? -1 : 1;
-        s = s.slice(1);
+    if (i < n && (s[i] === '+' || s[i] === '-')) {
+        if (s[i] === '-') sign = -1;
+        i++;
     }
 
-    return { sign, str: s };
-}
+    let result = 0;
+    const INT_MAX = (2 ** 31) - 1;
+    const INT_MIN = -(2 ** 31)
+    while (i < n && s[i] >= '0' && s[i] <= '9') {
+        let digit = s[i].charCodeAt(0) - '0'.charCodeAt(0);
 
-conversion = (s) => {
-    let convertedString = '';
-    for (let i = 0; i < s.length; ++i) {
-        if (s[i] >= '0' && s[i] <= '9') {
-            convertedString += s[i];
-        } else {
-            break;
+        // check overflow before adding digit
+        if (result > Math.floor(INT_MAX / 10) || (result === Math.floor(INT_MAX / 10) && digit > 7)) {
+            return sign === 1 ? INT_MAX : INT_MIN;
         }
+
+        result = result * 10 + digit;
+        i++;
     }
-    return convertedString;
-}
 
-clamp32 = (num) => {
-    const INT_MIN = -(2 ** 31);
-    const INT_MAX = 2 ** 31 - 1;
-
-    if (num < INT_MIN) return INT_MIN;
-    if (num > INT_MAX) return INT_MAX;
-    return num;
-}
+    return result * sign;
+};
