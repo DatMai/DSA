@@ -23,10 +23,10 @@ var myAtoi = function (s) {
     let MAX_LAST_DIGIT = MAX_INT % 10;
     while (i < n && s[i] >= '0' && s[i] <= '9') {
         let digit = s[i] - '0';
-
         if (result > MAX_DIV_10 || (result === MAX_DIV_10 && digit > MAX_LAST_DIGIT)) {
             return sign === 1 ? MAX_INT : MIN_INT;
         }
+
         result = result * 10 + digit;
         i++;
     }
