@@ -6,7 +6,7 @@ var myAtoi = function (s) {
     let i = 0;
     let n = s.length;
 
-    while (s[i] === ' ') {
+    while (i < n && s[i] === ' ') {
         i++;
     }
 
