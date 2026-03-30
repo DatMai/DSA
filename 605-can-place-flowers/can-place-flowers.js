@@ -9,13 +9,13 @@ var canPlaceFlowers = function (flowerbed, n) {
             let left = i === 0 || flowerbed[i - 1] === 0;
             let right = i === flowerbed.length - 1 || flowerbed[i + 1] === 0;
 
-            if (left && right) {
+            if (left && right && flowerbed[i] === 0) {
                 flowerbed[i] = 1;
                 n--;
             }
         }
-        if (flowerbed.length == 1 && flowerbed[0] === 0) return true;
     }
-    console.log('checking n', flowerbed, n)
+    if (flowerbed.length === 1 && flowerbed[0] === 0) return true;
+
     return n <= 0;
 };
