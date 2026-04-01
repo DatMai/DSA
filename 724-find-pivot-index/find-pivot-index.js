@@ -4,14 +4,10 @@
  */
 var pivotIndex = function (nums) {
     let leftSum = 0;
-    let total = nums.reduce((accumulator, currentValue) => accumulator + currentValue);
+    let totalSum = nums.reduce((a, b) => a + b);
     for (let i = 0; i < nums.length; ++i) {
-        leftSum += nums[i - 1] ? nums[i - 1] : 0;
-
-        if (total - leftSum - nums[i] == leftSum) {
-            return i;
-        }
-
+        if (totalSum - leftSum - nums[i] == leftSum) return i;
+        leftSum += nums[i];
     }
     return -1;
 };
