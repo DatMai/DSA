@@ -3,17 +3,17 @@
  * @return {number}
  */
 var myAtoi = function (s) {
-    let i = 0;
     let n = s.length;
+    let i = 0;
 
-    while (i < n && s[i] === ' ') {
-        i++;
+    while (s[i] === ' ') {
+        ++i;
     }
 
     let sign = 1;
     if (i < n && (s[i] === '+' || s[i] === '-')) {
-        if (s[i] === '-') sign = -1;
-        i++;
+        if (s[i] === '-') { sign = -1; }
+        ++i;
     }
 
     let result = 0;
@@ -26,9 +26,8 @@ var myAtoi = function (s) {
         if (result > MAX_DIV_10 || (result === MAX_DIV_10 && digit > MAX_LAST_DIGIT)) {
             return sign === 1 ? MAX_INT : MIN_INT;
         }
-
         result = result * 10 + digit;
-        i++;
+        ++i;
     }
 
     return result * sign;
