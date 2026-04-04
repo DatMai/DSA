@@ -3,20 +3,18 @@
  * @return {boolean}
  */
 var isValidSudoku = function (board) {
-    let seen = new Set();
+    let set = new Set();
     for (let i = 0; i < 9; ++i) {
         for (let j = 0; j < 9; ++j) {
-            if (board[i][j] === '.') continue;
+            if (board[i][j] == '.') continue;
+            let row = `number ${board[i][j]} in row ${i}`;
+            let column = `number ${board[i][j]} in column ${j}`;
+            let box = `number ${board[i][j]} in box (${Math.floor(i / 3)},${Math.floor(j / 3)})`;
 
-            let row = `num ${board[i][j]} in row ${i}`;
-            let col = `num ${board[i][j]} in col ${j}`;
-            let box = `num ${board[i][j]} in box (${Math.floor(i / 3)},${Math.floor(j / 3)})`;
-
-            if (seen.has(row) || seen.has(col) || seen.has(box)) return false;
-
-            seen.add(row);
-            seen.add(col);
-            seen.add(box);
+            if (set.has(row) || set.has(column) || set.has(box)) return false;
+            set.add(row);
+            set.add(column);
+            set.add(box);
         }
     }
 
