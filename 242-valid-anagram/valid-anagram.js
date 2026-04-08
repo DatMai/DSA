@@ -3,22 +3,9 @@
  * @param {string} t
  * @return {boolean}
  */
-var isAnagram = function (s, t) {
-    let arrS = [], arrT = [];
+var isAnagram = function(s, t) {
+    let sortedS = s.split('').sort().join('');
+    let sortedT = t.split('').sort().join('');
 
-    if (s.length != t.length) return false;
-    
-    for (let i = 0; i < s.length; i++) {
-        arrS.push(s[i]);
-        arrT.push(t[i]);
-    }
-
-    arrS = arrS.sort();
-    arrT = arrT.sort();
-    for (let i in arrS) {
-        if (arrS[i] != arrT[i]) {
-            return false
-        }
-    }
-    return true;
+    return sortedS == sortedT;
 };
