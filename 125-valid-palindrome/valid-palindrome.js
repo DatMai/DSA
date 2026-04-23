@@ -3,12 +3,10 @@
  * @return {boolean}
  */
 var isPalindrome = function (s) {
-    let newString = '';
-    for (let c of s) {
-        if (c >= '0' && c <= '9' || c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z') {
-            newString += c.toLowerCase();
-        };
+    let convertedString = '';
+    for (let i = 0; i < s.length; ++i) {
+        if (s[i] >= 'a' && s[i] <= 'z' || s[i] >= 'A' && s[i] <= 'Z' || s[i] >= '0' && s[i] <= '9') convertedString += s[i];
     }
-    let reversedString = newString.split('').reverse().join('')
-    return newString === reversedString;;
+    let reversedString = convertedString.split('').reverse().join('');
+    return reversedString.toLowerCase() === convertedString.toLowerCase();
 };
