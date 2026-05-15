@@ -1,0 +1,1 @@
+const findMin = nums => nums[_.sortedIndexBy(nums, nums.at(-1), c => c <= nums.at(-1))];
