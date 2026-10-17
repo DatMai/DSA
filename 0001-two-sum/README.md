@@ -50,4 +50,4 @@
 
 **Solution:** [`two-sum.js`](./two-sum.js) · JavaScript
 
-**Result:** Runtime 2 ms (beats 71.1%) · Memory 57.2 MB (beats 8.9%)
+**Result:** Runtime 1 ms (beats 89.4%) · Memory 56.6 MB (beats 13.7%)
