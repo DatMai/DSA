@@ -117,4 +117,4 @@
 
 **Solution:** [`climbing-stairs-ii.js`](./climbing-stairs-ii.js) · JavaScript
 
-**Result:** Runtime 6 ms (beats 86.4%) · Memory 69.7 MB (beats 81.8%)
+**Result:** Runtime 4 ms (beats 100.0%) · Memory 80.4 MB (beats 17.4%)
